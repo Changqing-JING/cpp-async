@@ -24,7 +24,7 @@ struct TaskQueue
         {
             return false;
         }
-        std::this_thread::sleep_for(std::chrono::seconds(m_cbs.top().m_t - m_current));
+        std::this_thread::sleep_for(std::chrono::microseconds(m_cbs.top().m_t - m_current));
         std::function<void()> fn = std::move(m_cbs.top().m_cb);
         m_current = m_cbs.top().m_t;
         m_cbs.pop();
